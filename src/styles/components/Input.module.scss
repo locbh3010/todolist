@@ -1,0 +1,64 @@
+@import '../abstracts/';
+
+.input {
+    &[aria-invalid='true'] {
+        .inputInner {
+            border-color: $danger;
+        }
+
+        .startAdornment,
+        .startAdornment * {
+            color: $danger !important;
+            stroke: $danger !important;
+        }
+    }
+
+    &[data-start-adornment='true'] {
+        .inputInner {
+            padding-left: 12px;
+        }
+    }
+
+    &[data-end-adornment='true'] {
+        .inputInner {
+            padding-right: 12px;
+        }
+    }
+}
+
+.label {
+    font-size: $fz-tiny !important;
+    font-weight: 500 !important;
+    display: block !important;
+    margin-bottom: spacing(1) !important;
+    color: $gray-9 !important;
+}
+
+.helperText {
+    font-size: $fz-tiny !important;
+    font-weight: 500 !important;
+    color: $danger !important;
+}
+
+.inputInner {
+    height: 40px;
+    width: 100% !important;
+    border-radius: $rounded-lg;
+    border: 1.5px solid $gray-5;
+    transition: 0.15s;
+    padding: 0 20px;
+
+    :global {
+        .MuiInputBase-input {
+            width: 100% !important;
+            height: 100%;
+            padding: 0px;
+            font-size: $fz-small;
+        }
+    }
+
+    &:hover,
+    &:has(:focus) {
+        border-color: $primary-dark;
+    }
+}

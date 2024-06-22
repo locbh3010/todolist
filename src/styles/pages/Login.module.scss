@@ -1,0 +1,49 @@
+@import '../abstracts/';
+
+.auth {
+    @include size(100vw, 100vh);
+    @include flex;
+}
+
+.wave {
+    @include size(100%);
+    @include flex(column);
+    position: fixed;
+    z-index: -1;
+    inset: 0;
+
+    .waveImage {
+        position: absolute;
+        inset: 0;
+        max-width: unset !important;
+        object-fit: fill;
+        min-height: 100%;
+    }
+}
+
+.form {
+    border-radius: $rounded-2xl;
+    width: 480px;
+    padding: 30px 60px;
+    box-shadow: $shadow-lg;
+    background: rgba($white, 0.7);
+    backdrop-filter: blur(20px);
+}
+
+.formTitle {
+    text-align: center;
+    font-weight: 700;
+    font-size: $fz-heading-4;
+    margin-bottom: spacing(5);
+}
+
+.submit {
+    margin-top: spacing(4) !important;
+    margin-bottom: spacing(2) !important;
+}
+
+.register {
+    @include flex;
+    cursor: pointer;
+    transition: 0.05s;
+}

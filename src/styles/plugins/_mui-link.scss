@@ -1,0 +1,5 @@
+.MuiLink-root {
+    --color: #{$info};
+
+    color: var(--color) !important;
+}

@@ -1,0 +1,64 @@
+@import '../abstracts/';
+
+.button {
+    --ripple-color: $gray-a;
+
+    @include flex($gap: spacing(1.25));
+
+    position: relative;
+    text-align: center;
+    border-radius: $rounded-lg !important;
+    border-width: 1px;
+    border-style: solid;
+
+    background-color: var(--background-color) !important;
+    color: var(--text-color) !important;
+    border-color: var(--border-color) !important;
+
+    transition: 0.2s;
+
+    &:hover {
+        background-color: var(--backgroundHover-color) !important;
+        color: var(--textHover-color) !important;
+        border-color: var(--borderHover-color) !important;
+
+        box-shadow: $shadow-lg !important;
+    }
+
+    &:disabled {
+        opacity: 0.3;
+        pointer-events: none;
+    }
+
+    @each $color, $variants in $colors-with-variants {
+        @each $variant, $values in $variants {
+            &.#{$color}.#{$variant} {
+                @each $key, $value in $values {
+                    --#{$key}-color: #{$value};
+                }
+            }
+        }
+    }
+
+    .rippleVisible {
+        background-color: var(--ripple-color);
+    }
+}
+
+.fullWidth {
+    width: 100%;
+}
+
+.medium {
+    font-size: $fz-small;
+    font-weight: 600;
+    height: 40px;
+    padding: 0 spacing(3);
+}
+
+.large {
+    font-size: $fz-body;
+    font-weight: 600;
+    height: 48px;
+    padding: 0 spacing(4);
+}
