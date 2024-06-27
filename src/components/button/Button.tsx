@@ -1,7 +1,8 @@
-import { ButtonBase } from '@mui/material'
+import { ButtonBase, CircularProgress } from '@mui/material'
 import buttonClasses from '@styles/components/Button.module.scss'
 import classNames from 'classnames'
 import { forwardRef } from 'react'
+import { buttonLoaderSize } from './constants'
 import { ButtonProps } from './types'
 
 const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
@@ -13,6 +14,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
         loading = false,
         size = 'medium',
         fullWidth = false,
+        loaderColor = 'default',
         ...rest
     } = props
 
@@ -37,6 +39,19 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
             ref={ref}
             {...rest}
         >
+            {loading && (
+                <CircularProgress
+                    style={{
+                        transition: '0.15s linear'
+                    }}
+                    size={buttonLoaderSize[size]}
+                    className={classNames(
+                        buttonClasses.loader,
+                        buttonClasses[loaderColor]
+                    )}
+                />
+            )}
+
             {children}
         </ButtonBase>
     )

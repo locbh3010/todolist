@@ -43,7 +43,10 @@
 }
 
 .register {
-    @include flex;
+    display: flex !important;
+    justify-content: center !important;
     cursor: pointer;
     transition: 0.05s;
+    width: 100% !important;
+    text-align: center;
 }

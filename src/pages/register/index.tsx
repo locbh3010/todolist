@@ -1,4 +1,5 @@
 import { useAuth } from '@/store/auth/hooks'
+import { RegisterData } from '@/store/auth/types'
 import wave from '@/svg/wave.svg'
 import { Button } from '@components/button'
 import { Iconify } from '@components/icon/Iconify'
@@ -7,21 +8,23 @@ import { Link, Stack } from '@mui/material'
 import loginStyles from '@styles/pages/Login.module.scss'
 import { useCallback } from 'react'
 import { useForm } from 'react-hook-form'
-import { defaultValues, loginSchema } from './constants'
-import { LoginData } from './types'
-import { routes } from '@utils/routes'
+import { defaultValues, registerSchema } from './constants'
 import { Link as RouterLink } from 'react-router-dom'
+import { routes } from '@utils/routes'
 
-const Login = () => {
-    const { login, isLoadingLogin } = useAuth()
+const Register = () => {
+    const { register, isLoadingRegister } = useAuth()
 
     const { control, handleSubmit } = useForm({
         defaultValues,
         mode: 'onChange',
-        resolver: loginSchema
+        resolver: registerSchema
     })
 
-    const handleLogin = useCallback((data: LoginData) => login(data), [login])
+    const handleLogin = useCallback(
+        (data: RegisterData) => register(data),
+        [register]
+    )
 
     return (
         <div className={loginStyles.auth}>
@@ -39,7 +42,7 @@ const Login = () => {
                 autoComplete='off'
                 aria-autocomplete='none'
             >
-                <h1 className={loginStyles.formTitle}>Welcome back!</h1>
+                <h1 className={loginStyles.formTitle}>Created new account!</h1>
 
                 <Stack spacing={2.5}>
                     <TextField
@@ -68,25 +71,25 @@ const Login = () => {
                 </Stack>
 
                 <Button
-                    loading={isLoadingLogin}
+                    loading={isLoadingRegister}
                     type='submit'
                     size='large'
                     className={loginStyles.submit}
                     fullWidth
                 >
-                    Log In
+                    Register
                 </Button>
 
                 <Link
                     className={loginStyles.register}
                     component={RouterLink}
-                    to={routes.register}
+                    to={routes.login}
                 >
-                    Or Register
+                    Or Login
                 </Link>
             </form>
         </div>
     )
 }
 
-export default Login
+export default Register

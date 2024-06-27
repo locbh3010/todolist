@@ -1,14 +1,17 @@
+type ColorType =
+    | 'default'
+    | 'primary'
+    | 'secondary'
+    | 'danger'
+    | 'warning'
+    | 'success'
+    | 'info'
+
 export type ButtonProps = {
     className?: string
 
-    color?:
-        | 'default'
-        | 'primary'
-        | 'secondary'
-        | 'danger'
-        | 'warning'
-        | 'success'
-        | 'info'
+    color?: ColorType
+    loaderColor?: ColorType
 
     size?: 'small' | 'medium' | 'large'
 

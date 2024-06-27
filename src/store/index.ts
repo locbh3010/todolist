@@ -11,7 +11,7 @@ const store = configureStore({
     middleware: (getDefaultMiddleware) =>
         getDefaultMiddleware({
             serializableCheck: false
-        }).concat(thunk)
+        }).concat([thunk])
 })
 
 type RootState = ReturnType<typeof store.getState>
